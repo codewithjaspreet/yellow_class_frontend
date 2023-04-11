@@ -73,6 +73,7 @@ class _LoginState extends State<Login> {
                 child: Column(
                   children: [
                     TextFormField(
+                      controller: widget.loginController.nameController,
                       // controller : loginController.emailController,
                       decoration: InputDecoration(
                         focusedBorder: const OutlineInputBorder(
@@ -100,6 +101,7 @@ class _LoginState extends State<Login> {
                       height: 20.h,
                     ),
                     TextFormField(
+                        controller :widget.loginController.emailController,
                       onTap: () {
                         // Change the suffix icon color when the field is tapped
                         setState(() {
@@ -134,6 +136,7 @@ class _LoginState extends State<Login> {
                       height: 20.h,
                     ),
                     TextFormField(
+                      controller :widget.loginController.passwordController,
                       // controller : loginController.orgController,
                       obscureText: true,
                       decoration: InputDecoration(

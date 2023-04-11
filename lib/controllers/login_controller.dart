@@ -5,10 +5,14 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 import '../utils/endpoints.dart';
-import '../views/auth/login.dart';
 import '../views/contact_listing.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 class LoginController extends GetxController {
+
+
+
+  @override
+
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -29,10 +33,12 @@ class LoginController extends GetxController {
     );
 
     print(response.body);
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('token', jsonDecode(response.body)['token']);
 
     if (response.statusCode == 200) {
       Get.snackbar('Success', 'User registered successfully');
-      Get.to(Login());
+      Get.to( ContactListing(token:  jsonDecode(response.body)['token'] ,));
     }
 
     else {

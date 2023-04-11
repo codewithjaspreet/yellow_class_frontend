@@ -4,4 +4,7 @@ class ApiEndpoints{
 
 
   static const String registerUser = "${base_url}registration";
+
+  static const String loginUser = "${base_url}login";
+
 }

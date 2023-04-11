@@ -8,21 +8,20 @@ import '../utils/endpoints.dart';
 import '../views/auth/login.dart';
 import '../views/contact_listing.dart';
 
-class SignUpController extends GetxController {
+class LoginController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  void registerUser() async {
+  void loginUser() async {
     var requestBody = {
 
-      'name': nameController.text.trim(),
       'email': emailController.text.trim(),
       'password': passwordController.text.trim(),
     };
 
     var response = await http.post(
-      Uri.parse(ApiEndpoints.registerUser),
+      Uri.parse(ApiEndpoints.loginUser),
       headers: {
         'Content-Type': 'application/json',
       },

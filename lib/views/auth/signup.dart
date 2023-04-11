@@ -63,7 +63,7 @@ class _LoginState extends State<SignUp> {
                     Column(
 
                       children: [
-                        Image.asset("assets/logo.png"),
+                        Image.asset("assets/logo.jpg"),
                         SizedBox(height: 10.h,),
                         const Text("Login" , style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 20),),
 
@@ -156,15 +156,15 @@ class _LoginState extends State<SignUp> {
                       height: 20.h,
                     ),
                     TextFormField(
-                      controller: signUpController.designationController,
+                      controller: signUpController.passwordController,
                       // controller : loginController.orgController,
                       obscureText: true,
                       decoration: InputDecoration(
                         focusedBorder: const OutlineInputBorder(
                           borderSide: BorderSide(color: Color(0xffff00a6d6)),
                         ),
-                        hintText: "Designation",
-                        labelText: "designation",
+                        hintText: "password",
+                        labelText: "Password",
                         hintStyle: const TextStyle(color: Colors.grey),
                         contentPadding: EdgeInsets.all(16.sp),
                         border: OutlineInputBorder(
@@ -195,11 +195,17 @@ class _LoginState extends State<SignUp> {
 
                           children: [
 
-                            Text(
-                              "Already have an account ? Login In",
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 14.sp,
+                            GestureDetector(
+
+                              onTap: (){
+                                Get.to(() =>  Login());
+                              },
+                              child: Text(
+                                "Already have an account ? Login In",
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 14.sp,
+                                ),
                               ),
                             ),
                           ],

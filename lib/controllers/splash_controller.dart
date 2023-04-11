@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
+import 'package:ivy_contact/views/auth/signup.dart';
 
 import '../views/auth/login.dart';
 
@@ -15,7 +16,7 @@ class SplashController extends GetxController {
 
     // Navigate to the appropriate screen
     Timer(const Duration(seconds: 3), () {
-      Get.to(Login());
+      Get.to(SignUp());
     });
   }
 

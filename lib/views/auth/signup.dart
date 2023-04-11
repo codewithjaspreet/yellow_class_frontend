@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:ivy_contact/views/auth/login.dart';
 import 'package:ivy_contact/views/contact_listing.dart';
 
+import '../../controllers/signup_controller.dart';
+
 
 class SignUp extends StatefulWidget {
   // LoginController loginController = Get.put(LoginController());
@@ -26,29 +28,15 @@ class _LoginState extends State<SignUp> {
       _obscureText = !_obscureText;
     });
   }
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _orgController = TextEditingController();
 
 
-
-  // LoginController loginController = Get.put(LoginController());
+  SignUpController signUpController = Get.put(SignUpController());
 
   @override
   Widget build(BuildContext context) {
     GlobalKey<FormState> form = GlobalKey<FormState>();
 
-    void _submitForm() {
 
-
-      if(form.currentState!.validate()){
-
-        SnackBar snackBar = const SnackBar(content: Text("SignUp Successful"));
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        Get.offAll(() => const ContactListing());
-      }
-
-    }
     return Scaffold(
 
       appBar: AppBar(
@@ -75,7 +63,7 @@ class _LoginState extends State<SignUp> {
                     Column(
 
                       children: [
-                        Image.asset("assets/Icons/Android/5_Login/drawable-hdpi/img_login.png"),
+                        Image.asset("assets/logo.png"),
                         SizedBox(height: 10.h,),
                         const Text("Login" , style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 20),),
 
@@ -92,8 +80,8 @@ class _LoginState extends State<SignUp> {
                 child: Column(
                   children: [
                     TextFormField(
+                      controller: signUpController.nameController,
 
-                      obscureText: true,
                       // controller : loginController.emailController,
                       decoration: InputDecoration(
 
@@ -103,8 +91,8 @@ class _LoginState extends State<SignUp> {
 
 
 
-                        hintText: "Email *",
-                        labelText: "email",
+                        hintText: "name *",
+                        labelText: "UserName",
 
                         hintStyle: const TextStyle(color: Colors.grey),
                         contentPadding: EdgeInsets.all(16.sp),
@@ -121,7 +109,7 @@ class _LoginState extends State<SignUp> {
 
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your email';
+                          return 'Please enter your Name';
                         }
                         return null;
                       },
@@ -131,14 +119,8 @@ class _LoginState extends State<SignUp> {
                     ),
                     TextFormField(
 
-                      onTap: () {
-                        // Change the suffix icon color when the field is tapped
-                        setState(() {
+                      controller: signUpController.emailController,
 
-                          _passwordIconColor = const Color(0xffff00a6d6);
-                        });
-                      },
-                      obscureText: _obscureText,
                       // controller : loginController.passwordController,
                       decoration: InputDecoration(
 
@@ -147,16 +129,10 @@ class _LoginState extends State<SignUp> {
                         ),
 
 
-                        suffixIcon: IconButton(
-                          icon: Icon(
 
-                              _obscureText ? Icons.visibility_off : Icons.visibility,color: _passwordIconColor
-                          ),
-                          onPressed: _toggleObscureText,
-                        ),
 
-                        hintText: "Password *",
-                        labelText: "Password",
+                        hintText: "email *",
+                        labelText: "Email",
 
                         hintStyle: const TextStyle(color: Colors.grey),
                         contentPadding: EdgeInsets.all(16.sp),
@@ -170,7 +146,7 @@ class _LoginState extends State<SignUp> {
 
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your Password';
+                          return 'Please enter your email';
                         }
                         return null;
                       },
@@ -180,14 +156,15 @@ class _LoginState extends State<SignUp> {
                       height: 20.h,
                     ),
                     TextFormField(
+                      controller: signUpController.designationController,
                       // controller : loginController.orgController,
                       obscureText: true,
                       decoration: InputDecoration(
                         focusedBorder: const OutlineInputBorder(
                           borderSide: BorderSide(color: Color(0xffff00a6d6)),
                         ),
-                        hintText: "Organization Code *",
-                        labelText: "Organization Code",
+                        hintText: "Designation",
+                        labelText: "designation",
                         hintStyle: const TextStyle(color: Colors.grey),
                         contentPadding: EdgeInsets.all(16.sp),
                         border: OutlineInputBorder(
@@ -219,7 +196,7 @@ class _LoginState extends State<SignUp> {
                           children: [
 
                             Text(
-                              "Forgot Password",
+                              "Already have an account ? Login In",
                               style: TextStyle(
                                 color: Colors.grey,
                                 fontSize: 14.sp,
@@ -242,15 +219,17 @@ class _LoginState extends State<SignUp> {
                           ),
                           child: ElevatedButton(
                             onPressed: () {
-                              print("login tak aagya");
+                              print("Sign Up tak aagya");
                               // loginController.loginWithEmail();
-                              _submitForm;
+                              // _submitForm;
                               // loginController.loginWithEmail();
+                              signUpController.registerUser();
+
                             },
                             style:
 
                             ElevatedButton.styleFrom(shape: const StadiumBorder(),backgroundColor: const Color(0xff171A63)),
-                            child: Text('Login' ,style:  TextStyle(fontWeight: FontWeight.bold ,fontSize: 16.sp),),
+                            child: Text('Register' ,style:  TextStyle(fontWeight: FontWeight.bold ,fontSize: 16.sp),),
                           )
                       ),
 

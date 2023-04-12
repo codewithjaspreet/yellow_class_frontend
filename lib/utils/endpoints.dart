@@ -9,4 +9,6 @@ class ApiEndpoints{
 
   static const String loginUser = "${base_url}login";
 
+  static const String getContactList = "${base_url}getContact";
+
 }

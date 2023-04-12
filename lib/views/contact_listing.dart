@@ -45,7 +45,7 @@ class _ContactListingState extends State<ContactListing> {
   void getContactList(userId) async {
     var regBody = {
 
-      'userId':userId
+      'userId':userId,
     };
     var response = await http.post(Uri.parse(ApiEndpoints.getContactList),
         headers: {"Content-Type":"application/json"},
@@ -65,9 +65,10 @@ class _ContactListingState extends State<ContactListing> {
       print(jsonResponse);
       Get.snackbar(
         'Success',
-        'Contact Added successfully',
+        'Contact List For the User',
         snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.yellow,
+        colorText: Colors.black,
       );
 
     } else {
@@ -77,6 +78,11 @@ class _ContactListingState extends State<ContactListing> {
   void addContact() async {
     var requestBody = {
       'userId': userId,
+      'firstName': firstNameController.text.trim(),
+      'lastName': lastNameController.text.trim(),
+      'designation': designationController.text.trim(),
+      'phoneNumber': phoneNumberController.text.trim(),
+
     };
 
     var response = await http.post(
@@ -101,6 +107,7 @@ class _ContactListingState extends State<ContactListing> {
       firstNameController.clear();
       designationController.clear();
       phoneNumberController.clear();
+      getContactList(userId);
     } else {
       Get.snackbar('Error', 'Something went wrong');
     }
@@ -124,7 +131,7 @@ class _ContactListingState extends State<ContactListing> {
           'Success',
           'Contact Deleted successfully',
           snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.red,
         );
         getContactList(userId);
       } else {
@@ -257,7 +264,7 @@ class _ContactListingState extends State<ContactListing> {
         body: SingleChildScrollView(
             child: Container(
           height: MediaQuery.of(context).size.height,
-          child:   ListView.builder(
+          child: items == null ? CircularProgressIndicator() :   ListView.builder(
             itemCount: items.length-1,
             padding: EdgeInsets.all(12.sp),
             itemBuilder: (context, index) {

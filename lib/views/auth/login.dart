@@ -17,8 +17,8 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final FocusNode _passwordFocusNode = FocusNode();
 
-  bool _obscureText = true;
-  Color _passwordIconColor = const Color(0xffB4C6D4);
+  final bool _obscureText = true;
+  final Color _passwordIconColor = const Color(0xffB4C6D4);
 
   // LoginController loginController = Get.put(LoginController());
 
@@ -102,13 +102,8 @@ class _LoginState extends State<Login> {
                     ),
                     TextFormField(
                         controller :widget.loginController.emailController,
-                      onTap: () {
-                        // Change the suffix icon color when the field is tapped
-                        setState(() {
-                          _passwordIconColor = const Color(0xffff00a6d6);
-                        });
-                      },
-                      // controller : loginController.passwordController,
+
+
                       decoration: InputDecoration(
                         focusedBorder: const OutlineInputBorder(
                           borderSide: BorderSide(color: Color(0xffff00a6d6)),

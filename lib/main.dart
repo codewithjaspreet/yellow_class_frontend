@@ -9,17 +9,19 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
 
-  // WidgetsFlutterBinding.ensureInitialized();
-  // SharedPreferences prefs = await SharedPreferences.getInstance();
-  runApp( MyApp() );
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String token = prefs.getString('token')??'';
+  runApp( MyApp(token: token,) );
 }
 
 class MyApp extends StatelessWidget {
-  // const MyApp({super.key , required this.token } );
-  
+  const MyApp({super.key , required this.token } );
+  //
 
 
-  // final String? token;
+  final String token;
+
   
 
   // This widget is the root of your application.
@@ -32,7 +34,9 @@ class MyApp extends StatelessWidget {
       builder: (context, a) {
         return   GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          home: SplashScreen(),
+          // home: SplashScreen(),
+
+          home : JwtDecoder.isExpired(token) == false ? ContactListing(token: token) : Login(),
           // home: JwtDecoder.isExpired(token!) == false ? ContactListing(token: token!) : Login(),
         );
       },

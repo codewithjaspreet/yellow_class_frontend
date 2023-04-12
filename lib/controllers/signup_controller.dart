@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 
 import '../utils/endpoints.dart';
 import '../views/auth/login.dart';
-import '../views/contact_listing.dart';
 
 class SignUpController extends GetxController {
   TextEditingController nameController = TextEditingController();

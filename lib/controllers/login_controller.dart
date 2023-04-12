@@ -33,11 +33,12 @@ class LoginController extends GetxController {
     );
 
     print(response.body);
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('token', jsonDecode(response.body)['token']);
+
 
     if (response.statusCode == 200) {
       Get.snackbar('Success', 'User registered successfully');
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString('token', jsonDecode(response.body)['token']);
       Get.to( ContactListing(token:  jsonDecode(response.body)['token'] ,));
     }
 

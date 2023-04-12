@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:get/get.dart';
 import 'package:ivy_contact/views/auth/signup.dart';
 
-import '../views/auth/login.dart';
 
 
 class SplashController extends GetxController {

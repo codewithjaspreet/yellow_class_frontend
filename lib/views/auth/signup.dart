@@ -20,14 +20,9 @@ class _LoginState extends State<SignUp> {
 
   final FocusNode _passwordFocusNode = FocusNode();
 
-  bool _obscureText = true;
-  Color _passwordIconColor = const Color(0xffB4C6D4);
+  final bool _obscureText = true;
+  final Color _passwordIconColor = const Color(0xffB4C6D4);
 
-  void _toggleObscureText() {
-    setState(() {
-      _obscureText = !_obscureText;
-    });
-  }
 
 
   SignUpController signUpController = Get.put(SignUpController());
@@ -40,7 +35,7 @@ class _LoginState extends State<SignUp> {
     return Scaffold(
 
       appBar: AppBar(
-        title: const Text("HappSales" , style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
+        title: const Text("TASK" , style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0.0,
@@ -65,7 +60,7 @@ class _LoginState extends State<SignUp> {
                       children: [
                         Image.asset("assets/logo.jpg"),
                         SizedBox(height: 10.h,),
-                        const Text("Login" , style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 20),),
+                        const Text("SignUp" , style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 20),),
 
                       ],
                     )

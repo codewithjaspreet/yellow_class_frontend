@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:ivy_contact/views/auth/login.dart';
+import 'package:ivy_contact/views/contact_listing.dart';
 import 'package:ivy_contact/views/splash_screen.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+
+  // WidgetsFlutterBinding.ensureInitialized();
+  // SharedPreferences prefs = await SharedPreferences.getInstance();
+  runApp( MyApp() );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  // const MyApp({super.key , required this.token } );
+  
+
+
+  // final String? token;
+  
 
   // This widget is the root of your application.
   @override
@@ -21,6 +33,7 @@ class MyApp extends StatelessWidget {
         return   GetMaterialApp(
           debugShowCheckedModeBanner: false,
           home: SplashScreen(),
+          // home: JwtDecoder.isExpired(token!) == false ? ContactListing(token: token!) : Login(),
         );
       },
     );

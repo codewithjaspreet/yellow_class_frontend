@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:ivy_contact/views/contact_listing.dart';
+import 'package:ivy_contact/views/auth/signup.dart';
 
 import '../../controllers/login_controller.dart';
 
@@ -166,7 +166,7 @@ class _LoginState extends State<Login> {
 
                     GestureDetector(
                       onTap: () {
-                        // Get.to(() => const ForgotPassword());
+                        Get.to(() =>  SignUp());
                       },
                       child: Container(
                         margin: EdgeInsets.only(top: 10.h),
@@ -174,7 +174,7 @@ class _LoginState extends State<Login> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Forgot Password",
+                              "Don't have an Account? Register Now",
                               style: TextStyle(
                                 color: Colors.grey,
                                 fontSize: 14.sp,
@@ -200,6 +200,7 @@ class _LoginState extends State<Login> {
                             onPressed: () {
                               print("login tak aagya");
                               widget.loginController.loginUser();
+                              print("yaha aya ni");
                             },
                             style: ElevatedButton.styleFrom(
                                 shape: const StadiumBorder(),

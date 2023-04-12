@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
-
 import '../utils/InputFeild.dart';
 import 'package:http/http.dart' as http;
 import '../utils/endpoints.dart';
@@ -75,7 +74,6 @@ class _ContactListingState extends State<ContactListing> {
       Get.snackbar('Error', 'Something went wrong');
     }
   }
-
   void addContact() async {
     var requestBody = {
       'userId': userId,
@@ -106,6 +104,33 @@ class _ContactListingState extends State<ContactListing> {
     } else {
       Get.snackbar('Error', 'Something went wrong');
     }
+  }
+  void deleteContact(id) {
+
+    var requestBody = {
+      'id': id,
+    };
+
+    http.post(
+      Uri.parse(ApiEndpoints.deleteContact),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(requestBody),
+    ).then((response) {
+      print(response.body);
+      if (response.statusCode == 200) {
+        Get.snackbar(
+          'Success',
+          'Contact Deleted successfully',
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.green,
+        );
+        getContactList(userId);
+      } else {
+        Get.snackbar('Error', 'Something went wrong');
+      }
+    });
   }
 
   @override
@@ -300,14 +325,19 @@ class _ContactListingState extends State<ContactListing> {
                           mainAxisAlignment: MainAxisAlignment.center ,
                           children: [
 
-                            Container(
-                              width: 30.w,
-                              height: 30.h,
-                              decoration: BoxDecoration(
-                                color: Colors.black,
-                                shape: BoxShape.circle,
+                            GestureDetector(
+                              onTap:(){
+                                deleteContact(items[index+1]['_id']);
+                              },
+                              child: Container(
+                                width: 30.w,
+                                height: 30.h,
+                                decoration: BoxDecoration(
+                                  color: Colors.black,
+                                  shape: BoxShape.circle,
+                                ),
+                                child:  Icon(Icons.delete , color: Colors.red,),
                               ),
-                              child:  Icon(Icons.delete , color: Colors.red,),
                             )
 ,
                             SizedBox(height: 12.h,),

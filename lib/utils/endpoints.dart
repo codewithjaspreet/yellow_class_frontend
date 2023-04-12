@@ -11,4 +11,6 @@ class ApiEndpoints{
 
   static const String getContactList = "${base_url}getContact";
 
+  static const String deleteContact = "${base_url}deleteContact";
+
 }

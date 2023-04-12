@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           // home: SplashScreen(),
 
-          home : JwtDecoder.isExpired(token) == false ? ContactListing(token: token) : Login(),
+         home: JwtDecoder.isExpired(token) == false ? ContactListing(token: token) : Login(),
           // home: JwtDecoder.isExpired(token!) == false ? ContactListing(token: token!) : Login(),
         );
       },

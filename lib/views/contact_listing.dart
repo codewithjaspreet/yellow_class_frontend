@@ -261,7 +261,7 @@ class _ContactListingState extends State<ContactListing> {
         body: SingleChildScrollView(
             child: SizedBox(
           height: MediaQuery.of(context).size.height,
-          child: ListView.builder(
+          child: items == null ?  SizedBox.shrink() : ListView.builder(
             itemCount: items.length-1,
             padding: EdgeInsets.all(12.sp),
             itemBuilder: (context, index) {
@@ -390,10 +390,10 @@ class _ContactListingState extends State<ContactListing> {
                                               margin: EdgeInsets.only(top: 20.h),
                                               child: Column(
                                                 children: [
-                                                  TextField(
-
-
-
+                                                  InputFeild(
+                                                    labelText: 'firstName',
+                                                    hint: 'firstName',
+                                                    controller: firstNameController,
                                                   ),
                                                   InputFeild(
                                                     labelText: 'lastName',

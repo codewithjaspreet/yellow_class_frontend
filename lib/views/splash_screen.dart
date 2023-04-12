@@ -16,18 +16,30 @@ class SplashScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Center(
-                child: Container(
-                  margin: EdgeInsets.only(top: 350.h),
-                  child: Image.asset(
-                      'assets/contact.png'),
-                ),
+              Column(
+                children: [
+                  Center(
+                    child: Container(
+                      margin: EdgeInsets.only(top: 320.h),
+                      child: Image.asset(
+                          'assets/contact_banner.png'),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 20.h),
+                    child: Text("Full Stack Contact Application",
+                        style: TextStyle(
+                            color: const Color(0xff000000),
+                            fontSize: 24.sp,
+                            fontWeight: FontWeight.w700)),
+                  ),
+                ],
               ),
               Column(
                 children: [
                   Container(
                       margin: EdgeInsets.only(bottom: 20.h),
-                      child: Text("© 2021 HappSales App.",
+                      child: Text("© 2023 IvyKids (Formerly YellowClass)",
                           style: TextStyle(
                               color: const Color(0xff000000),
                               fontSize: 14.sp,

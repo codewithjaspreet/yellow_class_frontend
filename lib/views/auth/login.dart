@@ -168,12 +168,25 @@ class _LoginState extends State<Login> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              "Don't have an Account? Register Now",
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 14.sp,
+                            RichText(
+                              text: TextSpan(
+                                text: "Don't have an Account? ",
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 14.sp,
+                                ),
+                                children: [
+                                  TextSpan(
+                                    text: "Register Now",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                ],
                               ),
+
                             ),
                           ],
                         ),

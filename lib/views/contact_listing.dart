@@ -246,17 +246,7 @@ class _ContactListingState extends State<ContactListing> {
               Navigator.pop(context);
             },
           ),
-          actions: [
-            IconButton(
-              onPressed: () {
-                // Get.to(() => Menu());
-              },
-              icon: const Icon(
-                Icons.menu,
-                color: Colors.black,
-              ),
-            ),
-          ],
+
         ),
         body: SingleChildScrollView(
             child: SizedBox(

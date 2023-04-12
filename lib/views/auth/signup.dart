@@ -195,13 +195,28 @@ class _LoginState extends State<SignUp> {
                               onTap: (){
                                 Get.to(() =>  Login());
                               },
-                              child: Text(
-                                "Already have an account ? Login In",
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 14.sp,
+                              child: RichText(
+                                text: TextSpan(
+                                  text: "Already have an account? ",
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 14.sp,
+                                  ),
+                                  children: [
+                                    TextSpan(
+                                      text: "LogIn",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.bold
+                                      ),
+                                    ),
+                                  ],
                                 ),
+
                               ),
+
+
                             ),
                           ],
 

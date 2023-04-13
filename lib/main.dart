@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:ivy_contact/views/auth/login.dart';
-import 'package:ivy_contact/views/contact_listing.dart';
 import 'package:ivy_contact/views/splash_screen.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   //
